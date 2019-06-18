@@ -1,0 +1,178 @@
+<?php
+$dbconn = pg_connect("host=localhost dbname=proyecto user=postgres password=slinky123") or die('No se ha podido conectar: ' . pg_last_error());
+// Realizando una consulta SQL
+//drop table prefusuario;
+//CREATE TABLE prefusuario id serial PRIMARY KEY, valor int  NOT NULL);
+//INSERT INTO prefusuario(valor) VALUES('1');
+//UPDATE prefusuario SET valor='2' WHERE id=1;
+//select valor from prefusuario where id=1;
+
+$query = 'SELECT * FROM aprende ';
+$result = pg_query($query) or die('La consulta fallo: ' . pg_last_error());
+
+// Imprimiendo los resultados en HTML
+echo "<table>\n";
+while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+    echo "\t<tr>\n";
+    foreach ($line as $col_value) {
+        echo "\t\t<td>$col_value</td>\n";
+    }
+    echo "\t</tr>\n";
+}
+echo "</table>\n";
+
+// Liberando el conjunto de resultados
+pg_free_result($result);
+
+// Cerrando la conexión
+pg_close($dbconn);
+?>
+<!--<div class="pront">
+</div>-->
+<!--<div class="footer">
+  	<center>
+	<h2>Becario: Rodrigo Santiago González</h2>
+  <h3>INFOTEC</h3>
+		</center>
+</div>-->
+
+<p id="salidatxt"></p><br>
+<p id="salidatxt1"></p><br>
+<p id="salidatxt2"></p><br>
+<p id="salidatxt3"></p><br>
+
+<script type="text/javascript">
+var segundovi = 00;
+var segundovf = 59;
+var minutosve = new Array();
+//var minutosva = new Array();
+
+function contructor(){
+  var relleno = 0;
+    for(var i=0;i<30;i++){
+        minutosve.push(relleno);
+          relleno++;
+          relleno++;
+        }
+
+
+
+function startTime() {
+    //var relojmin = false;
+    var relojsec = false;
+    var relojsec2 = true;
+
+    var estado;
+    var today = new Date();
+    var hr = today.getHours();
+    var min = today.getMinutes();
+    var sec = today.getSeconds();
+    var dia = today.getDay();
+    //Add a zero in front of numbers<10
+    min = checkTime(min);
+    sec = checkTime(sec);
+    /*for(var i=0; i<30;i++){
+        var temporal = minutosve[i];
+        if(temporal==min){
+          //relojmin= true;
+          return true;
+          }
+        }*/
+
+    //Encender y apagar lucespermanetes
+    if(sec==segundovi){ relojsec= true; relojsec2=false; document.getElementById("salidatxt1").innerHTML = "Segundos que conciden en 00: esta en " + relojsec;}
+    if(sec==segundovf){ relojsec= false; relojsec2=true; document.getElementById("salidatxt2").innerHTML = "Segundos que conciden en 59: esta en " + relojsec2;}
+
+
+
+/*
+    if (relojmin==true  && relojsec==true){
+      document.getElementById("salidatxt").innerHTML = "encendido";
+      estado=true;
+    }
+    else if (relojmin==true && relojsec==false) {
+      document.getElementById("salidatxt").innerHTML = "encendido";
+      estado=false;
+    }
+    else {
+
+      document.getElementById("salidatxt").innerHTML = "fuera de ciclo";
+
+    }
+*/
+    control(estado);
+    // Checa el dia de la semana
+    //checadia(dia);
+    document.getElementById("clock").innerHTML = hr + " : " + min + " : " + sec;
+    ///document.getElementById("salidatxt").innerHTML = sec;
+
+    var time = setTimeout(function(){ startTime() }, 500);
+}
+
+function checkTime(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+}
+</script>
+<!--function control (estado){
+  if (estado==true){
+    document.getElementById("rojov").className = "colorrojo2";
+    document.getElementById("amarillov").className = "coloramarillo1";
+    document.getElementById("verdev").className = "colorverde1";
+  }
+  else {
+    document.getElementById("rojov").className = "colorrojo1";
+    document.getElementById("amarillov").className = "coloramarillo1";
+    document.getElementById("verdev").className = "colorverde2";
+  }
+
+}
+/*function checadia (o) {
+  switch (o) {
+    case '1':
+          //document.getElementById("rojov").className = "colorrojo1";
+          //document.getElementById("amarillov").className = "coloramarillo1";
+          //document.getElementById("verdev").className = "colorverde1";
+          break;
+    case '2':
+
+          break;
+    case '3':
+
+          break;
+    case '4':
+
+          break;
+    case '5':
+
+          break;
+    default: document.getElementById("salidatxt").innerHTML = 'error';
+  }
+}*/
+/*
+function abretab(evt, nombretab) {
+  // Declara todas las variables
+  var i, tabcontent, tablinks;
+
+  // Obtenga todos los elementos con class = "tabcontent" y ocúltelos
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  //  Obtener todos los elementos con class = "tablinks" y eliminar la clase "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Muestra la pestaña actual y agrega una clase "activa" al enlace que abrió la pestaña
+  document.getElementById(nombretab).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+// la pestaña que querramos que este por defecto
+document.getElementById("default").onclick();
+*/
+-->
