@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="elindex.css">
 
 </head>
-<body onload="startTime();impriphp();">
+<body onload="startTime()">
 <?php include("elindex.php"); ?>
 <script src="elindex.js"></script>
 
@@ -49,8 +49,6 @@
 <p id="dos"></p>
 <p id="tres"></p>
 <p id="cuatro"><?php echo $resjs; ?></p>
-
-
 <p id="cinco"></p>
 
 <script type="text/javascript">
@@ -61,8 +59,17 @@
     }
     else {
       document.getElementById("cinco").innerHTML = "No nes no es uno de la base de datos";
-
     }
+</script>
+<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+<h3>Modificar el intervalo determinado valores:(1,2,3)</h3>
+<input type="text" name="valinter"><br>
+<input type="submit" name="submit" value="Modificar intervalo" href="javascript:location.reload()"><br>
+</form>
+<p id="seis"></p>
+<script type="text/javascript">
+    var resphp2 = '<?php echo $valor_int_mod; ?>';
+    document.getElementById("seis").innerHTML = resphp2;
 </script>
 </body>
 </html>
