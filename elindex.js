@@ -11,6 +11,12 @@ var minutosve = new Array();
 
   }
 }*/
+function leerdatosPHP(){
+  var ok = new Array('<? echo "$arr"; ?>');
+  document.getElementById("seis").innerHTML = ok;
+}
+
+
 
 function contructor(minu){
   var relleno = 0;
@@ -44,6 +50,7 @@ function startTime() {
     control = contructor(min);
     //doblecont = controladord(control,sec);
     controlador(control,sec);
+    leerdatosPHP();
     document.getElementById("dos").innerHTML = control;
     var time = setTimeout(function(){ startTime() }, 500);
   }

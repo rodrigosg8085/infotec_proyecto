@@ -127,7 +127,24 @@ $name = $_POST['name'];
 echo "User Has submitted the form and entered this name : <b> $name </b>";
 echo "<br>You can use the following form again to enter a new name.";
 }
+class baseDatos
+{
+  public $host = "localhost";
+  public $dbnombre = "proyecto";
+  public $usuario = "postgres";
+  public $contra = "slinky123";
 
+  public function consultaDB()
+  {
+    $dbconn = pg_connect("host=$host dbname=$dbnombre user=$usuario password=$contra") or die('No se ha podido conectar: ' . pg_last_error());
+    $query = 'SELECT valor FROM prefusuario WHERE id=1';
+    $result = pg_query($query) or die('La consulta fallo: ' . pg_last_error());
+    $line = pg_fetch_array($result);
+    $respuestaDB = $line['valor'];
+    pg_free_result($result);
+    pg_close($dbconn);
+  }
+}
 ?>
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 

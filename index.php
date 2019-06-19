@@ -3,6 +3,10 @@
 <head>
 <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="elindex.css">
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </head>
 <body onload="startTime()">
@@ -50,26 +54,48 @@
 <p id="tres"></p>
 <p id="cuatro"><?php echo $resjs; ?></p>
 <p id="cinco"></p>
-
+<p id="seis"></p>
+<!--Este campo modificar a JSON-->
 <script type="text/javascript">
     var resphp = '<?php echo $resjs; ?>';
     var a = parseInt(resphp);
     if(a==1){
-      document.getElementById("cinco").innerHTML = a+" es el numero del la base de datos";
+      document.getElementById("cinco").innerHTML = a+ " es el numero del la base de datos";
     }
     else {
-      document.getElementById("cinco").innerHTML = "No nes no es uno de la base de datos";
+      document.getElementById("cinco").innerHTML = a+ " No nes no es uno de la base de datos";
     }
 </script>
+<!--Hasta aqui lo JSON -->
+
+
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 <h3>Modificar el intervalo determinado valores:(1,2,3)</h3>
 <input type="text" name="valinter"><br>
 <input type="submit" name="submit" value="Modificar intervalo" href="javascript:location.reload()"><br>
 </form>
-<p id="seis"></p>
-<script type="text/javascript">
-    var resphp2 = '<?php echo $valor_int_mod; ?>';
-    document.getElementById("seis").innerHTML = resphp2;
-</script>
+
+<!-- Modal -->
+<div class="modal show" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Options</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Modal content..</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 </body>
 </html>
