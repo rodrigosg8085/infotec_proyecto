@@ -1,22 +1,4 @@
 var minutosve = new Array();
-/*function impriphp(){
-
-  var resphp = '<?php echo $resjs; ?>';
-  var a = parseInt(resphp);
-  if(a==1){
-    document.getElementById("cinco").innerHTML = a+" es el numero del la base de datos";
-  }
-  else {
-    document.getElementById("cinco").innerHTML = a+" No nes no es uno de la base de datos";
-
-  }
-}*/
-function leerdatosPHP(){
-  var ok = new Array('<? echo "$arr"; ?>');
-  document.getElementById("seis").innerHTML = ok;
-}
-
-
 
 function contructor(minu){
   var relleno = 0;
@@ -35,6 +17,7 @@ function contructor(minu){
 document.getElementById("uno").innerHTML = corro;
 return corro;
 }
+
 function startTime() {
     var control;
     var estado;
@@ -50,8 +33,7 @@ function startTime() {
     control = contructor(min);
     //doblecont = controladord(control,sec);
     controlador(control,sec);
-    leerdatosPHP();
-    document.getElementById("dos").innerHTML = control;
+    //document.getElementById("dos").innerHTML = control;
     var time = setTimeout(function(){ startTime() }, 500);
   }
 
@@ -100,3 +82,23 @@ function startTime() {
     }
 
   }
+
+  /*function impriphp(){
+
+    var resphp = '<?php echo $resjs; ?>';
+    var a = parseInt(resphp);
+    if(a==1){
+      document.getElementById("cinco").innerHTML = a+" es el numero del la base de datos";
+    }
+    else {
+      document.getElementById("cinco").innerHTML = a+" No nes no es uno de la base de datos";
+
+    }
+  }*/
+
+
+
+
+    //var resphp = '<?php echo "$arr"; ?>'';
+    //var a = parseInt(resphp);
+    //document.getElementById("cinco").innerHTML = a+" esto es a y esto es el echo: "+resphp;

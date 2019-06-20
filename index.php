@@ -49,52 +49,19 @@
 <br>
 <br><br>
 <h3>Resultados:</h3>
-<p id="uno"></p>
-<p id="dos"></p>
-<p id="tres"></p>
-<p id="cuatro"><?php echo $resjs; ?></p>
-<p id="cinco"></p>
-<p id="seis"></p>
-<!--Este campo modificar a JSON-->
-<script type="text/javascript">
-    var resphp = '<?php echo $resjs; ?>';
-    var a = parseInt(resphp);
-    if(a==1){
-      document.getElementById("cinco").innerHTML = a+ " es el numero del la base de datos";
-    }
-    else {
-      document.getElementById("cinco").innerHTML = a+ " No nes no es uno de la base de datos";
-    }
-</script>
-<!--Hasta aqui lo JSON -->
-
+<p id="uno">1</p>
+<p id="dos">2</p>
+<p id="tres">3</p>
+<p id="cuatro">4</p>
+<p id="cinco">5</p>
+<p id="seis">6</p>
+<br>
 
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 <h3>Modificar el intervalo determinado valores:(1,2,3)</h3>
 <input type="text" name="valinter"><br>
 <input type="submit" name="submit" value="Modificar intervalo" href="javascript:location.reload()"><br>
 </form>
-
-<!-- Modal -->
-<div class="modal show" id="myModal" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Modal Options</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p>Modal content..</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
 
 
 </body>

@@ -18,15 +18,9 @@ function modificarDB($valorEnvio){
   pg_close($dbconn);
 }
 
-function retornarJSON(){
-  $arr = array('a' => 'holitas');
-
-  echo json_encode($arr);
-  echo "$arr";
-}
 
 consultaBD();
-retornarJSON();
+
 
 if(isset($_POST['submit']))
 {
